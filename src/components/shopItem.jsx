@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
-import mainImage from '../static/shop/hats/hat1.jpg';
+
 class ShopItem extends Component {
   render() {
+    const { price, title, image } = this.props.item;
     return (
       <div className="shop-item">
-        <img src={mainImage} alt="hat" />
-        <h5 className="item-title">Blue Jeans</h5>
-        <p className="item-price">99 eur</p>
+        <img
+          src={require(`../static/shop/hats/${image}.jpg`).default}
+          alt="hat"
+        />
+        <h5 className="item-title">{title}</h5>
+        <p className="item-price">{price} eur</p>
       </div>
     );
   }

@@ -36,6 +36,7 @@ a {
 .header {
   background-color: var(--primary);
   color: var(--secondary);
+  margin-bottom: 2em;
 }
 .nav-link-item {
   padding: 0.4em 1em;
@@ -80,6 +81,7 @@ img {
 
 .shop-item {
   text-align: center;
+  width: 33%;
 }
 
 .shop-item .item-title {
