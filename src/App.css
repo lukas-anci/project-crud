@@ -48,6 +48,10 @@ a {
 
 /* --Categories */
 
+.categories-aside {
+  min-width: 150px;
+}
+
 .categories ul {
   margin-top: 2em;
   list-style: none;
@@ -63,4 +67,7 @@ a {
 
 .categories > ul > li:hover {
   background-color: var(--secondary);
+}
+.social__link {
+  padding-right: 0.5em;
 }
