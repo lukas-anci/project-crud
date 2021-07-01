@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ShopItem from './shopItem';
+
 class ShopList extends Component {
   render() {
     return (
