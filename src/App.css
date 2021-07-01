@@ -26,6 +26,7 @@ a {
 /* common */
 .d-flex {
   display: flex;
+  gap: 1em;
 }
 .space-between {
   justify-content: space-between;
@@ -70,4 +71,19 @@ a {
 }
 .social__link {
   padding-right: 0.5em;
+}
+img {
+  max-width: 100%;
+}
+
+/* Shop Item */
+
+.shop-item {
+  text-align: center;
+}
+
+.shop-item .item-title {
+  font-size: 1em;
+  font-weight: normal;
+  margin-bottom: 0.2em;
 }
