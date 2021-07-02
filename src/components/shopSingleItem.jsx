@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Button from './common/button/button';
+import SocialLinks from './common/socialLinks';
 
 class ShopSingleItem extends Component {
-  state = {};
   render() {
+    const { socialLinksData } = this.props;
     return (
       <div className="single-item ">
         <div className="d-flex">
@@ -15,7 +16,11 @@ class ShopSingleItem extends Component {
             />
             <div className="single__photos d-flex flex-wrap">
               {[1, 2, 3].map((img) => (
-                <img src="https://picsum.photos/100/100" alt="small item" />
+                <img
+                  key={img}
+                  src="https://picsum.photos/100/100"
+                  alt="small item"
+                />
               ))}
             </div>
           </div>
@@ -43,7 +48,7 @@ class ShopSingleItem extends Component {
 
             <Button outline>Add to cart</Button>
             <Button>Buy it now</Button>
-            <div>social</div>
+            <SocialLinks titles socialLink={socialLinksData} />
           </div>
         </div>
         <p className="single-item__description">

@@ -21,9 +21,9 @@ class App extends Component {
         { _id: 5, title: 'T-Shirts' },
       ],
       socialLinksData: [
-        { to: 'www.facebook.com', icon: 'fa fa-facebook' },
-        { to: 'www.twitter.com', icon: 'fa fa-twitter' },
-        { to: 'www.instagram.com', icon: 'fa fa-instagram' },
+        { to: 'www.facebook.com', icon: 'fa fa-facebook', title: 'share' },
+        { to: 'www.twitter.com', icon: 'fa fa-twitter', title: 'tweet' },
+        { to: 'www.instagram.com', icon: 'fa fa-instagram', title: 'pin it' },
       ],
       items: [
         {

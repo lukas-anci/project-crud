@@ -10,6 +10,7 @@ const SocialLinks = (props) => {
             className="social__link"
           >
             <i className={item.icon}></i>
+            {props.titles ? <sup className="sup">{item.title}</sup> : ''}
           </a>
         );
       })}
