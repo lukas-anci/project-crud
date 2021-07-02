@@ -24,6 +24,12 @@ a {
   --secondary: snow;
 }
 /* common */
+
+.hr {
+  height: 1px;
+  background-color: gray;
+  margin: 1.5em 0;
+}
 .w-50 {
   width: 50%;
 }
@@ -128,4 +134,15 @@ img {
 
 .single__item-info-part Button:last-of-type {
   margin-bottom: 3em;
+}
+
+/* you-may-like */
+.you-may-like .shop-item img {
+  height: 150px;
+}
+
+.you-may-like .title {
+  font-size: 1.2em;
+  font-weight: normal;
+  margin-bottom: 1em;
 }

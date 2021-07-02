@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
+
 class ShopItem extends Component {
   render() {
     const { price, title, image } = this.props.item;

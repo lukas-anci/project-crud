@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Button from './common/button/button';
 import SocialLinks from './common/socialLinks';
+import YouMayAlsoLike from './youMayAlsoLike';
 
 class ShopSingleItem extends Component {
   constructor() {
@@ -30,7 +31,7 @@ class ShopSingleItem extends Component {
   };
 
   render() {
-    const { socialLinksData, item } = this.props;
+    const { socialLinksData, item, items } = this.props;
     return (
       <div className="single-item ">
         <div className="d-flex">
@@ -88,6 +89,7 @@ class ShopSingleItem extends Component {
           raised Sergeant embroidery on the front crown. Finer details include a
           matching sweatband and the tonal embroidered eyelets for ventilation.
         </p>
+        <YouMayAlsoLike relatedItems={items} />
       </div>
     );
   }
