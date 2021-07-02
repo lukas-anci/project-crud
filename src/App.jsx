@@ -33,6 +33,7 @@ class App extends Component {
           image: 'hat1',
           color: 'Fatigue',
           size: 'normal',
+          images: [1, 2, 3, 4, 5],
         },
         {
           _id: 2,
@@ -41,6 +42,7 @@ class App extends Component {
           image: 'hat2',
           color: 'Navy',
           size: 'normal',
+          images: [1, 2, 3, 4, 5],
         },
         {
           _id: 2,
@@ -49,6 +51,7 @@ class App extends Component {
           image: 'hatolive1',
           color: 'Olive',
           size: 'normal',
+          images: [1, 2, 3, 4, 5],
         },
       ],
     },

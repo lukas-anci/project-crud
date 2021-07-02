@@ -3,6 +3,24 @@ import Button from './common/button/button';
 import SocialLinks from './common/socialLinks';
 
 class ShopSingleItem extends Component {
+  constructor() {
+    super();
+    this.state = {
+      mainImage: '',
+      images: [],
+    };
+  }
+  componentDidMount() {
+    const { item } = this.props;
+    const imagesRequired = item.images.map(
+      (imgNo) =>
+        require(`../static/shop/hats/${item.image}${imgNo}.jpg`).default
+    );
+
+    // set default image
+    this.setState({ images: imagesRequired });
+  }
+
   render() {
     const { socialLinksData } = this.props;
     return (
@@ -15,12 +33,8 @@ class ShopSingleItem extends Component {
               alt="main item"
             />
             <div className="single__photos d-flex flex-wrap">
-              {[1, 2, 3].map((img) => (
-                <img
-                  key={img}
-                  src="https://picsum.photos/100/100"
-                  alt="small item"
-                />
+              {this.state.images.map((img) => (
+                <img key={img} src={img} alt="small item" />
               ))}
             </div>
           </div>

@@ -28,6 +28,7 @@ class Shop extends Component {
             path="/shop/item/1"
             render={(props) => (
               <ShopSingleItem
+                item={items.find((i) => i._id === 1)}
                 socialLinksData={socialLinksData}
                 items={items}
                 {...props}
