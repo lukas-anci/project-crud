@@ -94,3 +94,11 @@ class ShopSingleItem extends Component {
 }
 
 export default ShopSingleItem;
+
+// YouMayAlsoLike component sukuriam komponenta
+// itraukiam i singleItem componenta
+// viduje atvaizduoja viena eile ShopItem componentus
+// nuoroda veikia taip pat kaip ShopList
+// footer component. pasirasyti jsx
+// footer css
+// footer responsive
