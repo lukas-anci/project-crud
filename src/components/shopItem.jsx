@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 class ShopItem extends Component {
   render() {
-    const { price, title, image } = this.props.item;
+    const { _id, price, title, image } = this.props.item;
     return (
       <div className="shop-item">
-        <Link to="/shop/item/1">
+        <Link to={'/shop/item/' + _id}>
           <img
             src={require(`../static/shop/hats/${image}.jpg`).default}
             alt="hat"
