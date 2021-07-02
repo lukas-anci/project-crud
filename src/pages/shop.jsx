@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ShopList from './../components/shopList';
 import ShopSingleItem from './../components/shopSingleItem';
-import { Route, Switch } from 'react-router';
+import { Route } from 'react-router';
 
 class Shop extends Component {
   render() {

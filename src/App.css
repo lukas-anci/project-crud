@@ -24,6 +24,12 @@ a {
   --secondary: snow;
 }
 /* common */
+.w-50 {
+  width: 50%;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
 .d-flex {
   display: flex;
   gap: 1em;
