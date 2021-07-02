@@ -20,7 +20,7 @@ class App extends Component {
         { _id: 4, title: 'Jeans' },
         { _id: 5, title: 'T-Shirts' },
       ],
-      socialLink: [
+      socialLinksData: [
         { to: 'www.facebook.com', icon: 'fa fa-facebook' },
         { to: 'www.twitter.com', icon: 'fa fa-twitter' },
         { to: 'www.instagram.com', icon: 'fa fa-instagram' },
