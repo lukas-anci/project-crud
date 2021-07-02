@@ -5,6 +5,7 @@
   padding: 0.5em 2em;
   font-size: 1.3em;
   min-width: 200px;
+  margin-bottom: 0.4em;
 }
 
 .button_outline {
@@ -14,4 +15,5 @@
   padding: 0.5em 2em;
   font-size: 1.3em;
   min-width: 200px;
+  margin-bottom: 0.4em;
 }
