@@ -3,7 +3,12 @@ import css from './btn.module.css';
 class Button extends Component {
   state = {};
   render() {
-    return <button className={css.button}>{this.props.children}</button>;
+    console.log(this.props);
+    return (
+      <button className={this.props.outline ? css.button_outline : css.button}>
+        {this.props.children}
+      </button>
+    );
   }
 }
 
