@@ -19,7 +19,7 @@ class ShopSingleItem extends Component {
     const { images, image } = item;
 
     const imagesRequired = images.map(
-      (imgNo) => require(`../static/shop/hats/${image}_${imgNo}.jpg`).default
+      (imgNo) => require(`../static/shop/${image}${imgNo}.jpg`).default
     );
 
     // set default image
@@ -32,6 +32,9 @@ class ShopSingleItem extends Component {
       currentItemId,
       currentItem: item,
     });
+  }
+  componentDidUpdate(prevProps, prevState) {
+    console.log('update');
   }
 
   handleMainImage = (img) => {

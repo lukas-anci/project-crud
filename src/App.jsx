@@ -4,6 +4,7 @@ import './App.css';
 import HeaderX from './components/headerX';
 import Home from './pages/home';
 import Shop from './pages/shop';
+import Footer from './components/footer';
 
 class App extends Component {
   state = {
@@ -28,30 +29,30 @@ class App extends Component {
       items: [
         {
           _id: 1,
-          title: 'Rocco Flat Peak Cap - Fatigue',
-          price: 399.95,
-          image: 'hat1',
-          color: 'Fatigue',
+          title: 'Green hat',
+          price: 99.99,
+          image: 'acc_hat_01_',
+          color: 'green',
           size: 'normal',
           images: [1, 2, 3, 4, 5],
         },
         {
           _id: 2,
-          title: 'Rocco Flat Peak Cap - Navy',
-          price: 399.95,
-          image: 'hat2',
-          color: 'Navy',
+          title: 'Stealth Bomber Jacket',
+          price: 1599.95,
+          image: 'acc_jacket_01_',
+          color: 'navy',
           size: 'normal',
-          images: [1, 2, 3, 4, 5],
+          images: [1, 2],
         },
         {
-          _id: 2,
-          title: 'Hunter Baseball Cap - Olive',
-          price: 1399.95,
-          image: 'hatolive1',
-          color: 'Olive',
+          _id: 3,
+          title: 'Feather Slim Fit Denim Jeans',
+          price: 1299.95,
+          image: 'denim_01_',
+          color: 'indigo',
           size: 'normal',
-          images: [1, 2, 3, 4, 5],
+          images: [1, 2, 3],
         },
       ],
     },
@@ -69,6 +70,7 @@ class App extends Component {
             <Route exact path="/" component={Home} />
           </Switch>
         </div>
+        <Footer />
       </div>
     );
   }

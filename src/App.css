@@ -146,3 +146,12 @@ img {
   font-weight: normal;
   margin-bottom: 1em;
 }
+
+/* Footer */
+
+.footer-links {
+  display: block;
+}
+.copyright {
+  text-align: center;
+}

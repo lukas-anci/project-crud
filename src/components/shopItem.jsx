@@ -9,7 +9,7 @@ class ShopItem extends Component {
       <div className="shop-item">
         <Link to={'/shop/item/' + _id}>
           <img
-            src={require(`../static/shop/hats/${image}.jpg`).default}
+            src={require(`../static/shop/${image}3.jpg`).default}
             alt="hat"
           />
           <h5 className="item-title">{title}</h5>
