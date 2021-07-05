@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import Button from '../common/button/button';
 class CartItem extends Component {
   state = {
     qty: 1,
@@ -28,7 +29,7 @@ class CartItem extends Component {
             <p>
               {color} / {size}
             </p>
-            <button>remove</button>
+            <Button link>Remove</Button>
           </div>
         </div>
 

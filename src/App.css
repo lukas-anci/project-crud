@@ -219,6 +219,7 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: flex-start;
 }
 .order-item-info h4 {
   font-size: 1.2em;
