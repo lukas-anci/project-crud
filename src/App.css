@@ -11,9 +11,12 @@
 a {
   text-decoration: none;
   color: inherit;
+  display: inline-block;
 }
 
 .container {
+  padding-left: 1em;
+  padding-right: 1em;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -24,11 +27,27 @@ a {
   --secondary: snow;
 }
 /* common */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: normal;
+}
 
 .hr {
   height: 1px;
   background-color: gray;
   margin: 1.5em 0;
+}
+.d-block {
+  display: block;
+}
+input {
+  background-color: #eaeaea;
+  padding: 0.5em 0.2em;
+  border: 1px solid #eaeaea;
 }
 .w-50 {
   width: 50%;
@@ -128,7 +147,7 @@ img {
 .item-info__options {
   margin-bottom: 1em;
 }
-..item-info__options select {
+.item-info__options select {
   font-size: 1.1em;
 }
 
@@ -149,9 +168,13 @@ img {
 
 /* Footer */
 
-.footer-links {
-  display: block;
-}
 .copyright {
   text-align: center;
+}
+.footer__title {
+  font-size: 1.2em;
+  margin-bottom: 0.5em;
+}
+.footer__nav-link {
+  line-height: 1.5;
 }

@@ -58,19 +58,20 @@ class App extends Component {
     },
   };
   render() {
+    const { navLinks, shop } = this.state;
     return (
       <div className="App">
-        <HeaderX navLinks={this.state.navLinks} />
+        <HeaderX navLinks={navLinks} />
         <div className="container">
           <Switch>
             <Route
               path="/shop"
-              render={(props) => <Shop shop={this.state.shop} {...props} />}
+              render={(props) => <Shop shop={shop} {...props} />}
             />
             <Route exact path="/" component={Home} />
           </Switch>
         </div>
-        <Footer />
+        <Footer navLinks={navLinks} />
       </div>
     );
   }
