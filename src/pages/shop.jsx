@@ -3,6 +3,7 @@ import ShopList from './../components/shopList';
 import ShopSingleItem from './../components/shopSingleItem';
 import { Route } from 'react-router';
 import SocialLinks from './../components/common/socialLinks';
+import Cart from './../components/Cart';
 
 class Shop extends Component {
   render() {
@@ -34,6 +35,11 @@ class Shop extends Component {
                 {...props}
               />
             )}
+          />
+          <Route
+            exact
+            path="/shop/cart"
+            render={(props) => <Cart items={{}} {...props} />}
           />
           <Route
             exact
