@@ -3,10 +3,15 @@ import css from './btn.module.css';
 class Button extends Component {
   state = {};
   render() {
-    console.log(this.props);
+    const { outline, children, size } = this.props;
+
     return (
-      <button className={this.props.outline ? css.button_outline : css.button}>
-        {this.props.children}
+      <button
+        className={`${css.button} ${outline ? css.outline : ''} ${
+          size === 'medium' ? css.medium : ''
+        }`}
+      >
+        {children}
       </button>
     );
   }

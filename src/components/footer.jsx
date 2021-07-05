@@ -25,7 +25,7 @@ class Footer extends Component {
             </label>
             <div className="footer__input-group">
               <input type="email" placeholder="Your email" />
-              <Button>Subscribe</Button>
+              <Button size="medium">Subscribe</Button>
             </div>
           </div>
         </div>
