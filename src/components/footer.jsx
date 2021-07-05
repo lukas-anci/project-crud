@@ -12,7 +12,7 @@ class Footer extends Component {
             <h4 className="footer__title">Links</h4>
             <nav>
               {this.props.navLinks.map(({ to, title }) => (
-                <Link className="footer__nav-link d-block" to={to}>
+                <Link key={to} className="footer__nav-link d-block" to={to}>
                   {title}
                 </Link>
               ))}
