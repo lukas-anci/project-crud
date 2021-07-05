@@ -3,7 +3,7 @@ import ShopList from './../components/shopList';
 import ShopSingleItem from './../components/shopSingleItem';
 import { Route } from 'react-router';
 import SocialLinks from './../components/common/socialLinks';
-import Cart from './../components/Cart';
+import Cart from '../components/cart/Cart';
 
 class Shop extends Component {
   render() {
