@@ -230,6 +230,9 @@ img {
 .cart-columns {
   margin-bottom: 1.5em;
 }
+.item-preview img {
+  max-height: 125px;
+}
 
 /* cart table like columns */
 .cart-col {
