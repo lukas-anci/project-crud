@@ -27,6 +27,9 @@ a {
   --secondary: snow;
 }
 /* common */
+.d-upto-800 {
+  display: none;
+}
 h1,
 h2,
 h3,
@@ -236,4 +239,29 @@ img {
 .cart-col.first {
   width: auto;
   text-align: left;
+}
+
+/* Responsive  */
+@media screen and (max-width: 800px) {
+  .d-upto-800 {
+    display: block;
+  }
+  .cart-col {
+    justify-content: space-around;
+    width: 100%;
+    display: flex;
+  }
+  .cart-columns {
+    display: none;
+  }
+  .cart-item,
+  .item-preview {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+  }
+  .cart-item {
+    border-bottom: 1px solid lightgray;
+    padding: 1em 0 1.5em;
+  }
 }
