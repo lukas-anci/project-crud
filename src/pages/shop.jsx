@@ -7,7 +7,7 @@ import Cart from '../components/cart/Cart';
 
 class Shop extends Component {
   render() {
-    const { shopCategories, socialLinksData, items } = this.props.shop;
+    const { shopCategories, socialLinksData, items, cart } = this.props.shop;
     return (
       <div className="shop-page d-flex">
         <aside className="categories-aside">
@@ -39,7 +39,7 @@ class Shop extends Component {
           <Route
             exact
             path="/shop/cart"
-            render={(props) => <Cart items={{}} {...props} />}
+            render={(props) => <Cart cartItems={cart} {...props} />}
           />
           <Route
             exact
