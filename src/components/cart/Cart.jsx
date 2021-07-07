@@ -9,6 +9,10 @@ class Cart extends Component {
       cartTotal: 0,
     };
   }
+  // handleTotal = ()=>{
+
+  // }
+
   render() {
     return (
       <div>

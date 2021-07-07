@@ -49,7 +49,8 @@ class ShopSingleItem extends Component {
     return (
       <div className="single-item ">
         <div className="d-flex">
-          <div className="single__images-part w-50">
+          <div className="single__images-part w-50 pos-rel">
+            {item.salePrice && <span className="sale">Sale</span>}
             <img
               className="single__main-image"
               src={this.state.mainImage}
