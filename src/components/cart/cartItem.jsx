@@ -17,12 +17,7 @@ class CartItem extends Component {
     }
   }
   handleQty = ({ target }) => {
-    this.setState({ qty: target.value });
-    // handleTotal metodas cart.jsx
-
-    // galimybe ivykdyti handle total is cartItem atsiunciam suma
-
-    // cartItem atskiras metodas kuris grazina total suma
+    target.value >= 0 && this.setState({ qty: target.value });
   };
   componentDidMount() {
     const { image, quantity } = this.props.item;
@@ -55,11 +50,12 @@ class CartItem extends Component {
 
         <div className="cart-col">
           <h3 className="d-upto-800">Price</h3>
-          <h3 className="price">{price} eur</h3>
+          <h3 className="price">{+price.toFixed(2)} eur</h3>
         </div>
         <div className="cart-col">
           <h3 className="d-upto-800">Quantity</h3>
           <input
+            min="0"
             className="cart-qty"
             type="number"
             value={this.state.qty}
@@ -68,7 +64,7 @@ class CartItem extends Component {
         </div>
         <div className="cart-col">
           <h3 className="d-upto-800">Total</h3>
-          <h3 className="price-total">{this.state.total}</h3>
+          <h3 className="price-total">{+this.state.total.toFixed(2)}</h3>
         </div>
       </div>
     );
