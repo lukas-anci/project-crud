@@ -179,7 +179,10 @@ img {
 .item-info__options select {
   font-size: 1.1em;
 }
-
+.single__item-info-part .price {
+  font-size: 1.1em;
+  margin-bottom: 2.5em;
+}
 .single__item-info-part Button:last-of-type {
   margin-bottom: 3em;
 }

@@ -1,8 +1,8 @@
-.sale {
+.price {
   text-decoration: line-through;
 }
 
-.color {
-  color: red;
-  font-weight: bolder;
+.salePrice {
+  color: tomato;
+  text-decoration: none;
 }
