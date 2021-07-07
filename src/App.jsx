@@ -19,7 +19,7 @@ class App extends Component {
         { _id: 2, title: 'Denim' },
         { _id: 3, title: 'Footwear' },
         { _id: 4, title: 'Jeans' },
-        { _id: 5, title: 'T-Shirts' },
+        { _id: 5, title: 'Jacket' },
       ],
       socialLinksData: [
         { to: 'www.facebook.com', icon: 'fa fa-facebook', title: 'share' },
@@ -36,6 +36,7 @@ class App extends Component {
           color: 'green',
           size: 'normal',
           images: [1, 2, 3, 4, 5],
+          category: 'accesories',
         },
         {
           _id: 2,
@@ -45,6 +46,7 @@ class App extends Component {
           color: 'navy',
           size: 'normal',
           images: [1, 2, 3],
+          category: 'jacket',
         },
         {
           _id: 3,
@@ -55,6 +57,18 @@ class App extends Component {
           color: 'indigo',
           size: 'normal',
           images: [1, 2, 3],
+          category: 'denim',
+        },
+        {
+          _id: 4,
+          title: 'Autumn best',
+          price: 99.99,
+
+          image: 'foot_autumn_01_',
+          color: 'green',
+          size: 'normal',
+          images: [1, 2, 3, 4],
+          category: 'footwear',
         },
       ],
       cart: [

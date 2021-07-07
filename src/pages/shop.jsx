@@ -36,7 +36,7 @@ class Shop extends Component {
             </div>
             <SocialLinks socialLink={socialLinksData} />
           </aside>
-          <main>
+          <main className="shop-list-part">
             <Route
               path="/shop/item/:id"
               render={(props) => (

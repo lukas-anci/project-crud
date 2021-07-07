@@ -159,11 +159,23 @@ img {
   max-width: 100%;
 }
 
+/* Shop list */
+.shop-list {
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 /* Shop Item */
 
 .shop-item {
   text-align: center;
-  width: 33%;
+  width: 31%;
+}
+.shop-item img {
+  max-height: 200px;
+}
+.shop-list-part {
+  flex-grow: 1;
 }
 
 .shop-item .item-title {
