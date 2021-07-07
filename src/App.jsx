@@ -31,6 +31,7 @@ class App extends Component {
           _id: 1,
           title: 'Green hat',
           price: 99.99,
+          salePrice: 49.99,
           image: 'acc_hat_01_',
           color: 'green',
           size: 'normal',
@@ -43,7 +44,7 @@ class App extends Component {
           image: 'acc_jacket_01_',
           color: 'navy',
           size: 'normal',
-          images: [1, 2],
+          images: [1, 2, 3],
         },
         {
           _id: 3,
@@ -60,6 +61,7 @@ class App extends Component {
           _id: 1,
           title: 'Green hat',
           price: 99.99,
+
           image: 'acc_hat_01_',
           color: 'green',
           size: 'normal',
