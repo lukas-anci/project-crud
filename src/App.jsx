@@ -61,7 +61,7 @@ class App extends Component {
     },
   };
   async componentDidMount() {
-    console.log('app mounted');
+    console.log('app jsx mounted');
 
     const shopCopy = { ...this.state.shop };
     shopCopy.shopCategories = await request.getCategories();

@@ -14,6 +14,7 @@ class ShopSingleItem extends Component {
       images: [],
       currentItemId: '',
       currentItem: {},
+      selectedSize: { value: 'small' },
     };
   }
   async componentDidMount() {
@@ -38,12 +39,26 @@ class ShopSingleItem extends Component {
     });
   }
   componentDidUpdate(prevProps, prevState) {
-    console.log('update');
+    // console.log('update');
   }
 
   handleMainImage = (img) => {
     this.setState({ mainImage: img });
   };
+
+  handleSize = (e) => {
+    this.setState({ selectedSize: { value: e.target.value } });
+  };
+
+  getQuantity() {
+    const { currentItem: item, selectedSize } = this.state;
+    if (!item.sizeQty) return;
+    const { quantity } = item.sizeQty.find(
+      (i) => i.size === selectedSize.value
+    );
+    // console.log(quantity);
+    return quantity;
+  }
 
   render() {
     const { socialLinksData, items } = this.props;
@@ -76,23 +91,37 @@ class ShopSingleItem extends Component {
             <Price salePrice={item.salePrice}>{item.price}</Price>
             <div className="item-info__options d-flex">
               <div>
-                <label htmlFor="colors">Colors</label> <br />
+                <label htmlFor="colors">Sizes</label> <br />
                 <div className="item-qty">
-                  <select name="colors" id="colors">
+                  <select
+                    onChange={this.handleSize}
+                    value={this.state.selectedSize.value}
+                    name="colors"
+                    id="colors"
+                  >
                     {item.sizeQty &&
                       item.sizeQty.map((i) => (
-                        <option value="1">{i.size}</option>
+                        <option key={i.size} value={i.size}>
+                          {i.size}
+                        </option>
                       ))}
                   </select>
                 </div>
               </div>
               <div>
-                <label htmlFor="sizes">Sizes</label> <br />
+                <label htmlFor="sizes">Quantity</label> <br />
                 <select name="sizes" id="sizes">
-                  <option value="1">Small</option>
-                  <option value="2">Medium</option>
-                  <option value="3">Large</option>
+                  {item.sizeQty &&
+                    item.sizeQty.map((i) => (
+                      <option key={i.size} value={i.quantity}>
+                        {i.quantity}
+                      </option>
+                    ))}
                 </select>
+              </div>
+              <div>
+                <h4>In Stock</h4>
+                <p>{this.getQuantity()}</p>
               </div>
             </div>
             <Button outline>Add to cart</Button> <br />

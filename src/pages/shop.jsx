@@ -40,7 +40,7 @@ class Shop extends Component {
             <ul>
               {users.map((user) => {
                 return (
-                  <li>
+                  <li key={user.name}>
                     {user.name} {user.email} {user.password}
                   </li>
                 );
