@@ -5,7 +5,7 @@ import HeaderX from './components/headerX';
 import Home from './pages/home';
 import Shop from './pages/shop';
 import Footer from './components/footer';
-
+import axios from 'axios';
 class App extends Component {
   state = {
     navLinks: [
@@ -29,14 +29,30 @@ class App extends Component {
       items: [
         {
           _id: 1,
+
           title: 'Green hat',
+
           price: 99.99,
-          salePrice: 49.99,
+
+          salePrice: 49.9,
+
           image: 'acc_hat_01_',
+
           color: 'green',
-          size: 'normal',
+
+          sizeQty: [
+            { size: 'small', quantity: 10 },
+
+            { size: 'medium', quantity: 7 },
+
+            { size: 'large', quantity: 15 },
+          ],
+
           images: [1, 2, 3, 4, 5],
-          category: 'accesories',
+
+          sku: 'hat_01',
+
+          category: 'liink to ccat id',
         },
         {
           _id: 2,
@@ -96,6 +112,22 @@ class App extends Component {
       ],
     },
   };
+  async componentDidMount() {
+    console.log('app mounted');
+    // axios
+    //   .get('http://localhost:4000/api/shop/categories')
+    //   .then((result) => console.log(result.data))
+    //   .catch((err) => console.warn(err));
+    try {
+      const { data } = await axios.get(
+        'http://localhost:4000/api/shop/categories'
+      );
+      console.log(data);
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   render() {
     const { navLinks, shop } = this.state;
     return (
