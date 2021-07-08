@@ -22,28 +22,41 @@ class App extends Component {
         { to: 'www.instagram.com', icon: 'fa fa-instagram', title: 'pin it' },
       ],
       items: [],
-      cart: [
-        {
-          _id: 1,
-          title: 'Green hat',
-          price: 99.99,
+      cart: {
+        randomId458: [
+          {
+            _id: 1,
+            title: 'Green hat',
+            price: 99.99,
 
-          image: 'acc_hat_01_',
-          color: 'green',
-          size: 'normal',
-          sku: 'hat_01',
-          quantity: 1,
-        },
+            image: 'acc_hat_01_',
+            color: 'green',
+            size: 'normal',
+            sku: 'hat_01',
+            quantity: 1,
+          },
+          {
+            _id: 2,
+            title: 'Feather Slim Fit Denim Jeans',
+            price: 1299.95,
+            image: 'denim_01_',
+            color: 'indigo',
+            size: 'normal',
+            sku: '01',
+            quantity: 2,
+          },
+        ],
+      },
+      users: [
         {
-          _id: 2,
-          title: 'Feather Slim Fit Denim Jeans',
-          price: 1299.95,
-          image: 'denim_01_',
-          color: 'indigo',
-          size: 'normal',
-          sku: '01',
-          quantity: 2,
+          name: 'Bob Stoned',
+          email: 'bob@bob.com',
+          password: 'pass',
         },
+        // sukurti model User
+        // sukurti route gauti visiems useriams
+        // route gauti konkreciam user pagal id
+        // route prideti nauja useri
       ],
     },
   };
@@ -53,6 +66,7 @@ class App extends Component {
     const shopCopy = { ...this.state.shop };
     shopCopy.shopCategories = await request.getCategories();
     shopCopy.items = await request.getItems();
+    shopCopy.users = await request.getUsers();
     this.setState({ shop: shopCopy });
   }
 

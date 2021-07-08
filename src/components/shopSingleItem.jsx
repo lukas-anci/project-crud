@@ -4,6 +4,8 @@ import SocialLinks from './common/socialLinks';
 import YouMayAlsoLike from './youMayAlsoLike';
 import Price from './common/price';
 
+import request from '../utils/requests';
+
 class ShopSingleItem extends Component {
   constructor() {
     super();
@@ -14,9 +16,10 @@ class ShopSingleItem extends Component {
       currentItem: {},
     };
   }
-  componentDidMount() {
-    const currentItemId = +this.props.match.params.id;
-    const item = this.props.items.find((i) => i._id === currentItemId);
+  async componentDidMount() {
+    const currentItemId = this.props.match.params.id;
+    const item = await request.getSingleItem(currentItemId);
+
     const { images, image } = item;
 
     const imagesRequired = images.map(
@@ -44,7 +47,7 @@ class ShopSingleItem extends Component {
 
   render() {
     const { socialLinksData, items } = this.props;
-    const item = this.state.currentItem;
+    const { currentItem: item } = this.state;
 
     return (
       <div className="single-item ">
@@ -74,11 +77,14 @@ class ShopSingleItem extends Component {
             <div className="item-info__options d-flex">
               <div>
                 <label htmlFor="colors">Colors</label> <br />
-                <select name="colors" id="colors">
-                  <option value="1">Green</option>
-                  <option value="2">Red</option>
-                  <option value="3">Blue</option>
-                </select>
+                <div className="item-qty">
+                  <select name="colors" id="colors">
+                    {item.sizeQty &&
+                      item.sizeQty.map((i) => (
+                        <option value="1">{i.size}</option>
+                      ))}
+                  </select>
+                </div>
               </div>
               <div>
                 <label htmlFor="sizes">Sizes</label> <br />

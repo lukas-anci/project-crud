@@ -8,7 +8,9 @@ import Cart from '../components/cart/Cart';
 
 class Shop extends Component {
   render() {
-    const { shopCategories, socialLinksData, items, cart } = this.props.shop;
+    const { shopCategories, socialLinksData, items, cart, users } =
+      this.props.shop;
+    console.log(users);
     return (
       <div className="shop-page ">
         <div className="shop-search-cart d-flex space-between mb-1">
@@ -35,6 +37,15 @@ class Shop extends Component {
               </ul>
             </div>
             <SocialLinks socialLink={socialLinksData} />
+            <ul>
+              {users.map((user) => {
+                return (
+                  <li>
+                    {user.name} {user.email} {user.password}
+                  </li>
+                );
+              })}
+            </ul>
           </aside>
           <main className="shop-list-part">
             <Route
