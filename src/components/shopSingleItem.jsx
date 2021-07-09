@@ -4,7 +4,7 @@ import SocialLinks from './common/socialLinks';
 import YouMayAlsoLike from './youMayAlsoLike';
 import Price from './common/price';
 
-import { getSingleItem } from '../utils/requests';
+import { getSingleItem, addToCart } from '../utils/requests';
 
 class ShopSingleItem extends Component {
   constructor(props) {
@@ -58,8 +58,8 @@ class ShopSingleItem extends Component {
 
   handleAddToCart = () => {
     console.log('niveikia');
-
     // send item to backend to add to cart
+    addToCart();
   };
 
   getQuantity() {
