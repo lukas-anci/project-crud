@@ -6,7 +6,7 @@ import Home from './pages/home';
 import Shop from './pages/shop';
 import Footer from './components/footer';
 
-import request from './utils/requests';
+import { getCategories, getItems, getUsers } from './utils/requests';
 class App extends Component {
   state = {
     navLinks: [
@@ -64,9 +64,9 @@ class App extends Component {
     console.log('app jsx mounted');
 
     const shopCopy = { ...this.state.shop };
-    shopCopy.shopCategories = await request.getCategories();
-    shopCopy.items = await request.getItems();
-    shopCopy.users = await request.getUsers();
+    shopCopy.shopCategories = await getCategories();
+    shopCopy.items = await getItems();
+    shopCopy.users = await getUsers();
     this.setState({ shop: shopCopy });
   }
 
