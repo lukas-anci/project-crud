@@ -16,6 +16,7 @@ class ShopSingleItem extends Component {
       currentItem: {},
       selectedSize: { value: 'small' },
       selectedColor: 'green',
+      currentUserId: '60e6d62982e923a86848d0db',
     };
   }
   async componentDidMount() {
