@@ -14,7 +14,7 @@ class ShopSingleItem extends Component {
       images: [],
       currentItemId: '',
       currentItem: {},
-      selectedSize: { value: 'small' },
+      selectedSize: 'small',
       selectedColor: 'green',
       currentUserId: '60e6d62982e923a86848d0db',
     };
@@ -49,7 +49,7 @@ class ShopSingleItem extends Component {
   };
 
   handleSize = (e) => {
-    this.setState({ selectedSize: { value: e.target.value } });
+    this.setState({ selectedSize: e.target.value });
   };
 
   handleColor = (e) => {
@@ -57,17 +57,28 @@ class ShopSingleItem extends Component {
   };
 
   handleAddToCart = () => {
-    console.log('niveikia');
+    const {
+      currentUserId,
+      currentItem,
+      currentItemId,
+      selectedSize,
+      selectedColor,
+    } = this.state;
     // send item to backend to add to cart
-    addToCart();
+    addToCart(currentUserId, {
+      itemId: currentItemId,
+      color: selectedColor,
+      size: selectedSize,
+      quantity: 1,
+      sku: currentItem.sku,
+      price: currentItem.salePrice || currentItem.price,
+    });
   };
 
   getQuantity() {
     const { currentItem: item, selectedSize } = this.state;
     if (!item.sizeQty) return;
-    const { quantity } = item.sizeQty.find(
-      (i) => i.size === selectedSize.value
-    );
+    const { quantity } = item.sizeQty.find((i) => i.size === selectedSize);
     // console.log(quantity);
     return quantity;
   }
@@ -107,7 +118,7 @@ class ShopSingleItem extends Component {
                 <div className="item-qty">
                   <select
                     onChange={this.handleSize}
-                    value={this.state.selectedSize.value}
+                    value={this.state.selectedSize}
                     name="colors"
                     id="colors"
                   >
