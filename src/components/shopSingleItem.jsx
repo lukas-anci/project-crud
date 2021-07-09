@@ -7,14 +7,15 @@ import Price from './common/price';
 import request from '../utils/requests';
 
 class ShopSingleItem extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       mainImage: '',
       images: [],
       currentItemId: '',
       currentItem: {},
       selectedSize: { value: 'small' },
+      selectedColor: 'green',
     };
   }
   async componentDidMount() {
@@ -48,6 +49,16 @@ class ShopSingleItem extends Component {
 
   handleSize = (e) => {
     this.setState({ selectedSize: { value: e.target.value } });
+  };
+
+  handleColor = (e) => {
+    this.setState({ selectedColor: e.target.value });
+  };
+
+  handleAddToCart = () => {
+    console.log('niveikia');
+
+    // send item to backend to add to cart
   };
 
   getQuantity() {
@@ -109,14 +120,16 @@ class ShopSingleItem extends Component {
                 </div>
               </div>
               <div>
-                <label htmlFor="sizes">Quantity</label> <br />
-                <select name="sizes" id="sizes">
-                  {item.sizeQty &&
-                    item.sizeQty.map((i) => (
-                      <option key={i.size} value={i.quantity}>
-                        {i.quantity}
-                      </option>
-                    ))}
+                <label htmlFor="sizes">Colors</label> <br />
+                <select
+                  onChange={this.handleColor}
+                  value={this.state.selectedColor}
+                  name="colors"
+                  id="colors"
+                >
+                  <option value="green">Green</option>
+                  <option value="red">Red</option>
+                  <option value="blue">Blue</option>
                 </select>
               </div>
               <div>
@@ -124,7 +137,10 @@ class ShopSingleItem extends Component {
                 <p>{this.getQuantity()}</p>
               </div>
             </div>
-            <Button outline>Add to cart</Button> <br />
+            <Button onClick={this.handleAddToCart} outline>
+              Add to cart
+            </Button>{' '}
+            <br />
             <Button>Buy it now</Button>
             <SocialLinks titles socialLink={socialLinksData} />
           </div>

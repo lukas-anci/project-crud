@@ -10,7 +10,7 @@ class Shop extends Component {
   render() {
     const { shopCategories, socialLinksData, items, cart, users } =
       this.props.shop;
-    console.log(users);
+
     return (
       <div className="shop-page ">
         <div className="shop-search-cart d-flex space-between mb-1">
@@ -37,15 +37,19 @@ class Shop extends Component {
               </ul>
             </div>
             <SocialLinks socialLink={socialLinksData} />
-            <ul>
-              {users.map((user) => {
-                return (
-                  <li key={user.name}>
-                    {user.name} {user.email} {user.password}
-                  </li>
-                );
-              })}
-            </ul>
+            <div className="hr"></div>
+            <div className="users">
+              <ul>
+                <h3>Our Users</h3>
+                {users.map((user) => {
+                  return (
+                    <li key={user.name}>
+                      {user.name} {user.email}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
           </aside>
           <main className="shop-list-part">
             <Route

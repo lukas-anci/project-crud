@@ -5,7 +5,7 @@ import HeaderX from './components/headerX';
 import Home from './pages/home';
 import Shop from './pages/shop';
 import Footer from './components/footer';
-import axios from 'axios';
+
 import request from './utils/requests';
 class App extends Component {
   state = {
