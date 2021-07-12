@@ -12,6 +12,8 @@ class Shop extends Component {
     const { shopCategories, socialLinksData, items, cart, users } =
       this.props.shop;
 
+    // get cartCount prop and display
+
     return (
       <div className="shop-page ">
         <div className="shop-search-cart d-flex space-between mb-1">
@@ -20,7 +22,8 @@ class Shop extends Component {
             <input type="search" placeholder="Search" />
           </div>
           <Link to="/shop/cart" className="shop-cart">
-            <i className="fa fa-shopping-cart"></i> Cart
+            <i className="fa fa-shopping-cart"></i> Cart(
+            {this.props.cartCount && <span>{this.props.cartCount}</span>})
           </Link>
         </div>
         <div className="hr"></div>

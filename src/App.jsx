@@ -8,7 +8,12 @@ import Footer from './components/footer';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-import { getCategories, getItems, getUsers } from './utils/requests';
+import {
+  getCategories,
+  getItems,
+  getUsers,
+  getCartCount,
+} from './utils/requests';
 import Admin from './pages/admin';
 class App extends Component {
   state = {
@@ -64,6 +69,7 @@ class App extends Component {
         // route prideti nauja useri
       ],
     },
+    cartCount: null,
   };
   async componentDidMount() {
     console.log('app jsx mounted');
@@ -74,18 +80,21 @@ class App extends Component {
     shopCopy.users = await getUsers();
     this.setState({ shop: shopCopy });
   }
-  logInUserIfInSession() {
+  async logInUserIfInSession() {
     // check if user is in sesssion, set if it is
     const currentUserInSession = sessionStorage.getItem('loggedInUser');
     const currentUserInSessionEmail =
       sessionStorage.getItem('loggedInUserEmail');
     if (currentUserInSession) {
-      this.setState({
+      await this.setState({
         currentUser: {
           _id: currentUserInSession,
           email: currentUserInSessionEmail,
         },
       });
+
+      console.log(this.state.currentUser._id);
+      this.handleCartCount();
     }
   }
   handleLogin = (userId, email) => {
@@ -93,10 +102,19 @@ class App extends Component {
     sessionStorage.setItem('loggedInUserEmail', email);
     toast.success(`You are now logged in as ${email}`);
     this.setState({ currentUser: { _id: userId, email: email } });
+    this.handleCartCount();
   };
 
+  async handleCartCount() {
+    // nustatyti state cartCount i tiek kiek turim karte itemu
+
+    const response = await getCartCount(this.state.currentUser._id);
+    this.setState({ cartCount: response });
+    console.log('cartCountas', response);
+  }
+
   render() {
-    const { navLinks, shop, currentUser } = this.state;
+    const { navLinks, shop, currentUser, cartCount } = this.state;
     return (
       <div className="App">
         <ToastContainer />
@@ -106,7 +124,12 @@ class App extends Component {
             <Route
               path="/shop"
               render={(props) => (
-                <Shop onLogin={this.handleLogin} shop={shop} {...props} />
+                <Shop
+                  cartCount={cartCount}
+                  onLogin={this.handleLogin}
+                  shop={shop}
+                  {...props}
+                />
               )}
             />
             <Route exact path="/" component={Home} />
