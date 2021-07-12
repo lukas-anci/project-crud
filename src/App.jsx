@@ -65,12 +65,26 @@ class App extends Component {
   };
   async componentDidMount() {
     console.log('app jsx mounted');
-
+    this.logInUserIfInSession();
     const shopCopy = { ...this.state.shop };
     shopCopy.shopCategories = await getCategories();
     shopCopy.items = await getItems();
     shopCopy.users = await getUsers();
     this.setState({ shop: shopCopy });
+  }
+  logInUserIfInSession() {
+    // check if user is in sesssion, set if it is
+    const currentUserInSession = sessionStorage.getItem('loggedInUser');
+    const currentUserInSessionEmail =
+      sessionStorage.getItem('loggedInUserEmail');
+    if (currentUserInSession) {
+      this.setState({
+        currentUser: {
+          _id: currentUserInSession,
+          email: currentUserInSessionEmail,
+        },
+      });
+    }
   }
   handleLogin = (userId, email) => {
     sessionStorage.setItem('loggedInUser', userId);
