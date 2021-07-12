@@ -5,6 +5,8 @@ import HeaderX from './components/headerX';
 import Home from './pages/home';
 import Shop from './pages/shop';
 import Footer from './components/footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { getCategories, getItems, getUsers } from './utils/requests';
 import Admin from './pages/admin';
@@ -96,6 +98,7 @@ class App extends Component {
     const { navLinks, shop, currentUser } = this.state;
     return (
       <div className="App">
+        <ToastContainer />
         <HeaderX currentUser={currentUser} navLinks={navLinks} />
         <div className="container">
           <Switch>
