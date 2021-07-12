@@ -63,10 +63,12 @@ class ShopSingleItem extends Component {
 
   handleSize = (e) => {
     this.setState({ selectedSize: e.target.value });
+    toast.success(`Size is now ${e.target.value}`);
   };
 
   handleColor = (e) => {
     this.setState({ selectedColor: e.target.value });
+    toast.success(`Color is now ${e.target.value}`);
   };
 
   handleAddToCart = () => {

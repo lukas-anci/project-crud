@@ -5,7 +5,7 @@ import HeaderX from './components/headerX';
 import Home from './pages/home';
 import Shop from './pages/shop';
 import Footer from './components/footer';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import { getCategories, getItems, getUsers } from './utils/requests';
@@ -91,6 +91,7 @@ class App extends Component {
   handleLogin = (userId, email) => {
     sessionStorage.setItem('loggedInUser', userId);
     sessionStorage.setItem('loggedInUserEmail', email);
+    toast.success(`You are now logged in as ${email}`);
     this.setState({ currentUser: { _id: userId, email: email } });
   };
 
