@@ -1,5 +1,6 @@
 import CartItem from './cartItem';
 import React, { Component } from 'react';
+import { getCartItems } from '../../utils/requests';
 
 class CartList extends Component {
   constructor(props) {
@@ -9,8 +10,14 @@ class CartList extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // get all cart items for current user
+    const cartItems = await getCartItems(this.getUserIdFromSession());
+    console.log(cartItems.data);
+  }
+  getUserIdFromSession() {
+    const id = sessionStorage.getItem('loggedInUser');
+    return id ? id : console.error('no id in session');
   }
 
   render() {
