@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 class HeaderX extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loggedInUser: '',
+    };
+  }
+
   render() {
     return (
       <header className="header mb-1">
@@ -18,6 +25,11 @@ class HeaderX extends Component {
               );
             })}
           </nav>
+          {this.props.currentUser._id && (
+            <div className="logged-in">
+              Logged in: {this.props.currentUser.email}
+            </div>
+          )}
         </div>
       </header>
     );

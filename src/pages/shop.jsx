@@ -5,6 +5,7 @@ import { Route } from 'react-router';
 import { Link } from 'react-router-dom';
 import SocialLinks from './../components/common/socialLinks';
 import Cart from '../components/cart/Cart';
+import Button from './../components/common/button/button';
 
 class Shop extends Component {
   render() {
@@ -44,7 +45,15 @@ class Shop extends Component {
                 {users.map((user) => {
                   return (
                     <li key={user.name}>
-                      {user.name} {user.email}
+                      <p>
+                        {user.name} {user.email}
+                      </p>
+                      <Button
+                        onClick={() => this.props.onLogin(user._id, user.email)}
+                        size="medium"
+                      >
+                        Login
+                      </Button>
                     </li>
                   );
                 })}

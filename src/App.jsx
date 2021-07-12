@@ -7,12 +7,15 @@ import Shop from './pages/shop';
 import Footer from './components/footer';
 
 import { getCategories, getItems, getUsers } from './utils/requests';
+import Admin from './pages/admin';
 class App extends Component {
   state = {
+    currentUser: {},
     navLinks: [
       { to: '/', title: 'Home' },
       { to: '/shop', title: 'Shop' },
       { to: '/about', title: 'About' },
+      { to: '/admin', title: 'Admin' },
     ],
     shop: {
       shopCategories: [],
@@ -69,19 +72,27 @@ class App extends Component {
     shopCopy.users = await getUsers();
     this.setState({ shop: shopCopy });
   }
+  handleLogin = (userId, email) => {
+    sessionStorage.setItem('loggedInUser', userId);
+    sessionStorage.setItem('loggedInUserEmail', email);
+    this.setState({ currentUser: { _id: userId, email: email } });
+  };
 
   render() {
-    const { navLinks, shop } = this.state;
+    const { navLinks, shop, currentUser } = this.state;
     return (
       <div className="App">
-        <HeaderX navLinks={navLinks} />
+        <HeaderX currentUser={currentUser} navLinks={navLinks} />
         <div className="container">
           <Switch>
             <Route
               path="/shop"
-              render={(props) => <Shop shop={shop} {...props} />}
+              render={(props) => (
+                <Shop onLogin={this.handleLogin} shop={shop} {...props} />
+              )}
             />
             <Route exact path="/" component={Home} />
+            <Route path="/admin" component={Admin} />
           </Switch>
         </div>
         <Footer navLinks={navLinks} />
