@@ -81,6 +81,8 @@ class ShopSingleItem extends Component {
     } = this.state;
     // send item to backend to add to cart
     addToCart(currentUserId, {
+      title: currentItem.title,
+      image: currentItem.image,
       itemId: currentItemId,
       color: selectedColor,
       size: selectedSize,

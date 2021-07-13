@@ -22,6 +22,7 @@ class CartList extends Component {
   }
 
   render() {
+    console.log(' this.state.currentCart', this.state.currentCart);
     return (
       <div>
         <div className="cart-columns d-flex">
@@ -30,9 +31,9 @@ class CartList extends Component {
           <h3 className="cart-col">Quantity</h3>
           <h3 className="cart-col">Total</h3>
         </div>
-        {/* {this.state.currentCart.map((item) => (
+        {this.state.currentCart.map((item) => (
           <CartItem key={item._id} item={item} />
-        ))} */}
+        ))}
       </div>
     );
   }
