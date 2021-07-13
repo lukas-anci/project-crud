@@ -95,7 +95,7 @@ class ShopSingleItem extends Component {
       toast.error('error adding item');
     } else {
       toast.success('item added to cart');
-      // this.props.onCartCount(currentUserId);
+      this.props.onCartCount(currentUserId);
     }
     console.log('ats', ats);
   };
@@ -114,7 +114,7 @@ class ShopSingleItem extends Component {
 
     return (
       <div className="single-item ">
-        <div className="d-flex">
+        <div className="d-flex single__image-desc">
           <div className="single__images-part w-50 pos-rel">
             {item.salePrice && <span className="sale">Sale</span>}
             <h2>currentUserId: {this.state.currentUserId}</h2>

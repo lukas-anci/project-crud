@@ -302,6 +302,12 @@ img {
 
 /* Responsive  */
 @media screen and (max-width: 800px) {
+  .you-may-like__container {
+    overflow: hidden;
+  }
+  .you-may-like .shop-item {
+    flex-shrink: 0;
+  }
   .d-upto-800 {
     display: block;
   }
