@@ -71,7 +71,7 @@ class ShopSingleItem extends Component {
     toast.success(`Color is now ${e.target.value}`);
   };
 
-  handleAddToCart = () => {
+  handleAddToCart = async () => {
     const {
       currentUserId,
       currentItem,
@@ -80,7 +80,7 @@ class ShopSingleItem extends Component {
       selectedColor,
     } = this.state;
     // send item to backend to add to cart
-    addToCart(currentUserId, {
+    const ats = await addToCart(currentUserId, {
       title: currentItem.title,
       image: currentItem.image,
       itemId: currentItemId,
@@ -90,8 +90,14 @@ class ShopSingleItem extends Component {
       sku: currentItem.sku,
       price: currentItem.salePrice || currentItem.price,
     });
-    // this.props.onCartCount(currentUserId);
-    toast.success('item added to cart');
+    // pasitikrinam ar gavom atsakyma
+    if (!ats) {
+      toast.error('error adding item');
+    } else {
+      toast.success('item added to cart');
+      // this.props.onCartCount(currentUserId);
+    }
+    console.log('ats', ats);
   };
 
   getQuantity() {
