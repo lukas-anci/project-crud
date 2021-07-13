@@ -13,7 +13,7 @@ class CartList extends Component {
   async componentDidMount() {
     // get all cart items for current user
     const cartItems = await getCartItems(this.getUserIdFromSession());
-    console.log(cartItems.data);
+    // console.log(cartItems.data);
     this.setState({ currentCart: cartItems.data });
   }
   getUserIdFromSession() {
@@ -22,7 +22,6 @@ class CartList extends Component {
   }
 
   render() {
-    console.log(' this.state.currentCart', this.state.currentCart);
     return (
       <div>
         <div className="cart-columns d-flex">

@@ -93,7 +93,7 @@ class App extends Component {
         },
       });
 
-      console.log(this.state.currentUser._id);
+      // console.log(this.state.currentUser._id);
       this.handleCartCount();
     }
   }
@@ -110,7 +110,6 @@ class App extends Component {
 
     const response = await getCartCount(this.state.currentUser._id);
     this.setState({ cartCount: response });
-    console.log('cartCountas', response);
   }
 
   render() {
