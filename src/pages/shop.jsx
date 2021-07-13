@@ -43,8 +43,8 @@ class Shop extends Component {
             <SocialLinks socialLink={socialLinksData} />
             <div className="hr"></div>
             <div className="users">
-              <ul>
-                <h3>Our Users</h3>
+              <ul className="unstyle-list">
+                <h3 className="mb-2">Our Users</h3>
                 {users.map((user) => {
                   return (
                     <li key={user.name}>

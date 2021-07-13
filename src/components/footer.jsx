@@ -7,7 +7,7 @@ class Footer extends Component {
     return (
       <footer className="container">
         <div className="hr"></div>
-        <div className="footer-container d-flex">
+        <div className="footer-container flex-column-upto-500  d-flex">
           <div className="footer-links w-50">
             <h4 className="footer__title">Links</h4>
             <nav>
@@ -30,7 +30,7 @@ class Footer extends Component {
           </div>
         </div>
         <div className="hr"></div>
-        <div className="footer-bottom d-flex space-between">
+        <div className="footer-bottom flex-column-upto-500  d-flex space-between">
           <div className="footer__copy">
             Copyright © 2021, Simple. Powered by Shopify
           </div>
