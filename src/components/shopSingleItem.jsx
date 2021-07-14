@@ -50,7 +50,6 @@ class ShopSingleItem extends Component {
     });
   }
   componentDidUpdate(prevProps, prevState) {
-    const { currentUserId } = this.state;
     if (prevState.currentUserId !== sessionStorage.getItem('loggedInUser')) {
       console.log('update');
       this.setCurrentUserId();
@@ -100,14 +99,6 @@ class ShopSingleItem extends Component {
     console.log('ats', ats);
   };
 
-  getQuantity() {
-    const { currentItem: item, selectedSize } = this.state;
-    if (!item.sizeQty) return;
-    const { quantity } = item.sizeQty.find((i) => i.size === selectedSize);
-    // console.log(quantity);
-    return quantity;
-  }
-
   render() {
     const { socialLinksData, items } = this.props;
     const { currentItem: item } = this.state;
@@ -148,12 +139,9 @@ class ShopSingleItem extends Component {
                     name="colors"
                     id="colors"
                   >
-                    {item.sizeQty &&
-                      item.sizeQty.map((i) => (
-                        <option key={i.size} value={i.size}>
-                          {i.size}
-                        </option>
-                      ))}
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
                   </select>
                 </div>
               </div>
@@ -172,7 +160,7 @@ class ShopSingleItem extends Component {
               </div>
               <div>
                 <h4>In Stock</h4>
-                <p>{this.getQuantity()}</p>
+                <p>{item.quantity}</p>
               </div>
             </div>
             <Button onClick={this.handleAddToCart} outline>
