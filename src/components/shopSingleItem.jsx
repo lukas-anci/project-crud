@@ -71,24 +71,9 @@ class ShopSingleItem extends Component {
   };
 
   handleAddToCart = async () => {
-    const {
-      currentUserId,
-      currentItem,
-      currentItemId,
-      selectedSize,
-      selectedColor,
-    } = this.state;
+    const { currentUserId, currentItem } = this.state;
     // send item to backend to add to cart
-    const ats = await addToCart(currentUserId, {
-      title: currentItem.title,
-      image: currentItem.image,
-      itemId: currentItemId,
-      color: selectedColor,
-      size: selectedSize,
-      quantity: 1,
-      sku: currentItem.sku,
-      price: currentItem.salePrice || currentItem.price,
-    });
+    const ats = await addToCart(currentUserId, currentItem);
     // pasitikrinam ar gavom atsakyma
     if (!ats) {
       toast.error('error adding item');
@@ -96,7 +81,6 @@ class ShopSingleItem extends Component {
       toast.success('item added to cart');
       this.props.onCartCount(currentUserId);
     }
-    console.log('ats', ats);
   };
 
   render() {
