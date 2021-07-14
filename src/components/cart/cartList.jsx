@@ -1,6 +1,6 @@
 import CartItem from './cartItem';
 import React, { Component } from 'react';
-import { getCartItems } from '../../utils/requests';
+// import { getCartItems } from '../../utils/requests';
 
 class CartList extends Component {
   constructor(props) {
@@ -10,22 +10,14 @@ class CartList extends Component {
     };
   }
 
-  async componentDidMount() {
-    // get all cart items for current user
-    const cartItems = await getCartItems(this.getUserIdFromSession());
-    // console.log(cartItems.data);
-    // patikrinti ar cartItems.data yra tuscias objektas
-    // jei taip tai norim nenaujinti state
-    if (Object.keys(cartItems.data).length !== 0) {
-      this.setState({ currentCart: cartItems.data });
-    }
-  }
-  getUserIdFromSession() {
-    const id = sessionStorage.getItem('loggedInUser');
-    return id ? id : console.error('no id in session');
-  }
+  // perkelti currentCart state i cart componenta
+  // perkelti susijusias funkcijas ir isitikinti kad currentCart veikia Cart componente
+  // perduoti currentCart i cartList kaip props
+  // atvaizduoti cart items is gauto props
+  // suskaiciuoti cart Totalcart komponente
 
   render() {
+    console.log('prooooooops', this.props.cartItems);
     return (
       <div>
         <div className="cart-columns d-flex">
@@ -34,8 +26,12 @@ class CartList extends Component {
           <h3 className="cart-col">Quantity</h3>
           <h3 className="cart-col">Total</h3>
         </div>
-        {this.state.currentCart.map((item) => (
-          <CartItem key={item._id} item={item} />
+        {this.props.cartItems.map((item) => (
+          <CartItem
+            onQuantity={this.props.onQuantity}
+            key={item._id}
+            item={item}
+          />
         ))}
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { getCartItems } from '../../utils/requests';
 import Button from '../common/button/button';
 import CartList from './cartList';
 
@@ -7,21 +8,56 @@ class Cart extends Component {
     super(props);
     this.state = {
       cartTotal: 0,
+      currentCart: [],
     };
   }
-  // handleTotal = ()=>{
 
-  // }
+  calculateTotal(items) {
+    return items.reduce(
+      (acc, curr) => acc + curr.quantity * (curr.salePrice || curr.price),
+      0
+    );
+  }
+
+  async componentDidMount() {
+    // get all cart items for current user
+    const cartItems = await getCartItems(this.getUserIdFromSession());
+    if (Object.keys(cartItems).length !== 0) {
+      this.setState({
+        currentCart: cartItems,
+        cartTotal: this.calculateTotal(cartItems),
+      });
+      console.log('total:', this.calculateTotal(cartItems));
+    }
+    console.log(
+      'yoyo',
+      this.state.currentCart.map((i) => i.quantity).reduce((a, c) => a + c)
+    );
+  }
+  getUserIdFromSession() {
+    const id = sessionStorage.getItem('loggedInUser');
+    return id ? id : console.error('no id in session');
+  }
+
+  updateQuantity = (itemId, newQty) => {
+    console.log('updateQuantitiy');
+    console.log(itemId, newQty);
+    // iskviesti is cartItem el
+    // sendUpdateQty('this.getUserIdFromSession()','itemId', 5) - requests.js funkcijoj suskurti
+  };
 
   render() {
     return (
       <div>
-        <div className="cartList">
-          <CartList cartItems={this.props.cartItems} />
+        <div className="cartList mb-2">
+          <CartList
+            onQuantity={this.updateQuantity}
+            cartItems={this.state.currentCart}
+          />
         </div>
         <div className="d-flex">
           <div className="cart__instructions">
-            <label htmlFor="instructions">
+            <label htmlFor="instructions mb-1">
               Special instructions for seller
             </label>
             <br />
