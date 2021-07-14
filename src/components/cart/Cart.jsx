@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getCartItems } from '../../utils/requests';
+import { getCartItems, sendUpdateQty } from '../../utils/requests';
 import Button from '../common/button/button';
 import CartList from './cartList';
 
@@ -40,10 +40,8 @@ class Cart extends Component {
   }
 
   updateQuantity = (itemId, newQty) => {
-    console.log('updateQuantitiy');
-    console.log(itemId, newQty);
     // iskviesti is cartItem el
-    // sendUpdateQty('this.getUserIdFromSession()','itemId', 5) - requests.js funkcijoj suskurti
+    sendUpdateQty(this.getUserIdFromSession(), itemId, newQty);
   };
 
   render() {
