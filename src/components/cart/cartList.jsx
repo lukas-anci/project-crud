@@ -14,7 +14,11 @@ class CartList extends Component {
     // get all cart items for current user
     const cartItems = await getCartItems(this.getUserIdFromSession());
     // console.log(cartItems.data);
-    this.setState({ currentCart: cartItems.data });
+    // patikrinti ar cartItems.data yra tuscias objektas
+    // jei taip tai norim nenaujinti state
+    if (Object.keys(cartItems.data).length !== 0) {
+      this.setState({ currentCart: cartItems.data });
+    }
   }
   getUserIdFromSession() {
     const id = sessionStorage.getItem('loggedInUser');
