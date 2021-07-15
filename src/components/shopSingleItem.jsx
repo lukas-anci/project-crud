@@ -49,6 +49,15 @@ class ShopSingleItem extends Component {
       currentItem: item,
     });
   }
+  async updateItemQuantityAfterAddToCart() {
+    // get singleItem
+    // atnaujinti state su nauju item
+    // ivykdyti funkcija kai turim sekmes pranesima
+
+    const single = await getSingleItem(this.props.match.params.id);
+    this.setState({ currentItem: single });
+  }
+
   componentDidUpdate(prevProps, prevState) {
     if (prevState.currentUserId !== sessionStorage.getItem('loggedInUser')) {
       console.log('update');
@@ -79,7 +88,8 @@ class ShopSingleItem extends Component {
       toast.error('error adding item');
     } else {
       toast.success('item added to cart');
-      this.props.onCartCount(currentUserId);
+      this.props.onCartCount();
+      this.updateItemQuantityAfterAddToCart();
     }
   };
 
