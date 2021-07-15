@@ -191,6 +191,9 @@ img {
 .shop-item img {
   max-height: 200px;
 }
+.opacity {
+  opacity: 0.6;
+}
 .shop-list-part {
   flex-grow: 1;
 }
