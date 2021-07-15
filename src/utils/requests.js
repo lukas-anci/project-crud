@@ -65,4 +65,17 @@ export const getCartCount = async (userId) => {
 export const sendUpdateQty = async (userId, cartItemId, newQty) => {
   console.log('sendUpdateQty');
   console.log(userId, cartItemId, newQty);
+
+  // siusti PUT rrrrq /api/shop/cart/:userId
+
+  try {
+    const response = await axios.put(`${cartBaseUrl}/${userId}`, {
+      cartItemId,
+      newQty,
+    });
+    console.log(response.data);
+    return true;
+  } catch (err) {
+    console.log('err', err.message);
+  }
 };

@@ -17,7 +17,6 @@ class CartList extends Component {
   // suskaiciuoti cart Totalcart komponente
 
   render() {
-    console.log('prooooooops', this.props.cartItems);
     return (
       <div>
         <div className="cart-columns d-flex">

@@ -19,29 +19,38 @@ class Cart extends Component {
     );
   }
 
-  async componentDidMount() {
-    // get all cart items for current user
+  async getCurrentCartItems() {
     const cartItems = await getCartItems(this.getUserIdFromSession());
     if (Object.keys(cartItems).length !== 0) {
       this.setState({
         currentCart: cartItems,
         cartTotal: this.calculateTotal(cartItems),
       });
-      console.log('total:', this.calculateTotal(cartItems));
     }
-    console.log(
-      'yoyo',
-      this.state.currentCart.map((i) => i.quantity).reduce((a, c) => a + c)
-    );
+  }
+
+  async componentDidMount() {
+    this.getCurrentCartItems();
   }
   getUserIdFromSession() {
     const id = sessionStorage.getItem('loggedInUser');
     return id ? id : console.error('no id in session');
   }
 
-  updateQuantity = (itemId, newQty) => {
+  updateQuantity = async (itemId, newQty) => {
     // iskviesti is cartItem el
-    sendUpdateQty(this.getUserIdFromSession(), itemId, newQty);
+    const updateOk = await sendUpdateQty(
+      this.getUserIdFromSession(),
+      itemId,
+      newQty
+    );
+    if (updateOk === true) {
+      // atnaujinti itemus
+      console.log(
+        'ruosiames atnaujinti itemus, nes panasu kad pasikeite kiekis'
+      );
+      this.getCurrentCartItems();
+    }
   };
 
   render() {
