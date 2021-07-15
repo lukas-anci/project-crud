@@ -157,11 +157,19 @@ class ShopSingleItem extends Component {
                 <p>{item.quantity}</p>
               </div>
             </div>
-            <Button onClick={this.handleAddToCart} outline>
-              Add to cart
-            </Button>{' '}
-            <br />
-            <Button>Buy it now</Button>
+
+            {item.quantity === 0 ? (
+              <Button disabled={item.quantity === 0}>Out of stock</Button>
+            ) : (
+              <>
+                <Button onClick={this.handleAddToCart} outline>
+                  Add to cart
+                </Button>{' '}
+                <br />
+                <Button>Buy it now</Button>
+              </>
+            )}
+
             <SocialLinks titles socialLink={socialLinksData} />
           </div>
         </div>

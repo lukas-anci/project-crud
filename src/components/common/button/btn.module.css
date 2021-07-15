@@ -34,3 +34,9 @@ button:hover {
 button.outline:hover {
   color: rgb(83, 82, 82);
 }
+button:disabled {
+  opacity: 0.4;
+}
+button:disabled:hover {
+  color: snow;
+}
