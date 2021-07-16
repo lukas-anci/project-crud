@@ -79,3 +79,14 @@ export const sendUpdateQty = async (userId, cartItemId, newQty) => {
     console.log('err', err.message);
   }
 };
+
+export const removeItem = async (userId, cartItemId) => {
+  try {
+    const deleteResponse = await axios.put(`${cartBaseUrl}/delete/${userId}`, {
+      cartItemId,
+    });
+    return deleteResponse.data;
+  } catch (err) {
+    console.log(err);
+  }
+};

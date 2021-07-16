@@ -27,6 +27,10 @@ class CartItem extends Component {
   componentDidUpdate(prevProps, prevState) {
     if (prevState.qty !== this.state.qty) {
       this.setState({ total: this.getTotal() });
+      (async () => {
+        const warehouseQty = await this.getCurrentWarehouseStock();
+        console.log({ warehouseQty });
+      })();
     }
   }
   fixMaxItemStock(newCartQty) {
@@ -43,11 +47,14 @@ class CartItem extends Component {
   handleQty = ({ target }) => {
     // call fixMaxItemStock
 
-    if (target.value <= 0) return;
+    if (target.value < 0) return;
     this.setState({ qty: this.fixMaxItemStock(target.value) });
 
     // cia iskviesti updateQuantity ir paduoti id ir nauja value
-    this.props.onQuantity(this.props.item._id, target.value);
+    this.props.onQuantity(
+      this.props.item._id,
+      this.fixMaxItemStock(target.value)
+    );
   };
   componentDidMount() {
     // IFFE immediately invoked fn expression
@@ -66,7 +73,7 @@ class CartItem extends Component {
   }
 
   render() {
-    const { price, title, color, size } = this.props.item;
+    const { price, title, color, size, itemId } = this.props.item;
     return (
       <div className="cart-item d-flex">
         <div className="item-preview d-flex cart-col first">
@@ -80,7 +87,9 @@ class CartItem extends Component {
             <p>
               {color} / {size}
             </p>
-            <Button link>Remove</Button>
+            <Button onClick={() => this.props.onRemove(itemId)} link>
+              Remove
+            </Button>
           </div>
         </div>
 

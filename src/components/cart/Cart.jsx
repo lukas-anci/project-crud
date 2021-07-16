@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { getCartItems, sendUpdateQty } from '../../utils/requests';
+import { getCartItems, sendUpdateQty, removeItem } from '../../utils/requests';
 import Button from '../common/button/button';
 import CartList from './cartList';
+import { toast } from 'react-toastify';
 
 class Cart extends Component {
   constructor(props) {
@@ -11,6 +12,16 @@ class Cart extends Component {
       currentCart: [],
     };
   }
+
+  removeItemFromCart = async (cartItemId) => {
+    const currentUserId = sessionStorage.getItem('loggedInUser');
+    const deleteResult = await removeItem(currentUserId, cartItemId);
+    console.log(deleteResult);
+    if (deleteResult.cart) {
+      this.getCurrentCartItems();
+      toast.error('Item removed from cart');
+    }
+  };
 
   calculateTotal(items) {
     return items.reduce(
@@ -60,6 +71,7 @@ class Cart extends Component {
           <CartList
             onQuantity={this.updateQuantity}
             cartItems={this.state.currentCart}
+            onRemove={this.removeItemFromCart}
           />
         </div>
         <div className="d-flex">

@@ -27,6 +27,7 @@ class CartList extends Component {
         </div>
         {this.props.cartItems.map((item) => (
           <CartItem
+            onRemove={this.props.onRemove}
             onQuantity={this.props.onQuantity}
             key={item._id}
             item={item}
