@@ -60,7 +60,8 @@ class Cart extends Component {
       console.log(
         'ruosiames atnaujinti itemus, nes panasu kad pasikeite kiekis'
       );
-      this.getCurrentCartItems();
+      await this.getCurrentCartItems();
+      return true;
     }
   };
 
@@ -84,7 +85,7 @@ class Cart extends Component {
           </div>
           <div className="cart-info">
             <h4 className="cart__title">
-              Subtotal <span>{this.state.cartTotal} eur</span>
+              Subtotal <span>{this.state.cartTotal.toFixed(2)} eur</span>
             </h4>
             <i>Taxes and shipping calculated at checkout</i>
             <Button outline>Continue Shopping</Button>

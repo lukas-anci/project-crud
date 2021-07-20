@@ -44,17 +44,22 @@ class CartItem extends Component {
     }
     return newCartQty;
   }
-  handleQty = ({ target }) => {
+  handleQty = async ({ target }) => {
     // call fixMaxItemStock
 
     if (target.value < 0) return;
     this.setState({ qty: this.fixMaxItemStock(target.value) });
 
     // cia iskviesti updateQuantity ir paduoti id ir nauja value
-    this.props.onQuantity(
+    const updateSuccess = await this.props.onQuantity(
       this.props.item._id,
       this.fixMaxItemStock(target.value)
     );
+    if (updateSuccess) {
+      const newStock = await this.getCurrentWarehouseStock();
+      console.log('updatedStock', await this.getCurrentWarehouseStock());
+      this.setState({ maxItemInStock: newStock });
+    }
   };
   componentDidMount() {
     // IFFE immediately invoked fn expression
