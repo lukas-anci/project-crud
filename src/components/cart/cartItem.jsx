@@ -79,6 +79,14 @@ class CartItem extends Component {
     })();
   }
 
+  // sumazinti kieki iki nulio pries istrinant
+  beforeDelete = async (itemId) => {
+    const evt = { target: { value: 0 } };
+    this.handleQty(evt);
+    console.log('deleting');
+    await this.props.onRemove(itemId);
+  };
+
   render() {
     const { price, title, color, size, itemId } = this.props.item;
     return (
@@ -94,7 +102,7 @@ class CartItem extends Component {
             <p>
               {color} / {size}
             </p>
-            <Button onClick={() => this.props.onRemove(itemId)} link>
+            <Button onClick={() => this.beforeDelete(itemId)} link>
               Remove
             </Button>
           </div>
