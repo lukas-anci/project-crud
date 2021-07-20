@@ -8,6 +8,9 @@ import Cart from '../components/cart/Cart';
 import Button from './../components/common/button/button';
 
 class Shop extends Component {
+  // sukurti metoda kuris atspausdina kategorijas
+  // pavadinima ant kurios paspausta
+
   render() {
     const { shopCategories, socialLinksData, items, cart, users } =
       this.props.shop;
@@ -33,7 +36,11 @@ class Shop extends Component {
               <ul>
                 {shopCategories.map((item) => {
                   return (
-                    <li className="category-item" key={item._id}>
+                    <li
+                      onClick={() => this.props.onSelectCategory(item._id)}
+                      className="category-item"
+                      key={item._id}
+                    >
                       {item.title}
                     </li>
                   );

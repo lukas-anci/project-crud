@@ -13,6 +13,7 @@ import {
   getItems,
   getUsers,
   getCartCount,
+  getItemsByCategory,
 } from './utils/requests';
 import Admin from './pages/admin';
 class App extends Component {
@@ -115,6 +116,11 @@ class App extends Component {
   componentDidUpdate(prevProps, prevState) {
     console.log('app updated');
   }
+  selectCategory = async (cat) => {
+    console.log('you have selected', cat);
+    // panaudojam kat pavadinima kad parsiusiti veitoj visu items tik tos kategorijos items
+    const result = await getItemsByCategory(cat);
+  };
 
   render() {
     const { navLinks, shop, currentUser, cartCount } = this.state;
@@ -128,6 +134,7 @@ class App extends Component {
               path="/shop"
               render={(props) => (
                 <Shop
+                  onSelectCategory={this.selectCategory}
                   onCartCount={this.handleCartCount}
                   cartCount={cartCount}
                   onLogin={this.handleLogin}

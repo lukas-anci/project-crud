@@ -4,6 +4,7 @@ const catBaseUrl = 'http://localhost:4000/api/shop/categories';
 const itemBaseUrl = 'http://localhost:4000/api/shop/items';
 const userBaseUrl = 'http://localhost:4000/api/users';
 const cartBaseUrl = 'http://localhost:4000/api/shop/cart';
+// const allCatUrl = 'http://localhost:4000/api/shop/category/items';
 
 export const getCategories = async () => {
   try {
@@ -13,6 +14,15 @@ export const getCategories = async () => {
     console.log(err);
   }
 };
+export const getItemsByCategory = async (catId) => {
+  try {
+    const result = await axios.get(`${itemBaseUrl}/category/${catId}`);
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getItems = async () => {
   try {
     const itemsResult = await axios.get(itemBaseUrl);
