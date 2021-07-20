@@ -80,11 +80,11 @@ class CartItem extends Component {
   }
 
   // sumazinti kieki iki nulio pries istrinant
-  beforeDelete = async (itemId) => {
+  beforeDelete = (itemId) => {
     const evt = { target: { value: 0 } };
     this.handleQty(evt);
     console.log('deleting');
-    await this.props.onRemove(itemId);
+    this.props.onRemove(itemId);
   };
 
   render() {

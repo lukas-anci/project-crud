@@ -18,7 +18,8 @@ class Cart extends Component {
     const deleteResult = await removeItem(currentUserId, cartItemId);
     console.log(deleteResult);
     if (deleteResult.cart) {
-      this.getCurrentCartItems();
+      await this.getCurrentCartItems();
+      this.props.onCartCount();
       toast.error('Item removed from cart');
     }
   };
@@ -61,6 +62,7 @@ class Cart extends Component {
         'ruosiames atnaujinti itemus, nes panasu kad pasikeite kiekis'
       );
       await this.getCurrentCartItems();
+
       return true;
     }
   };
