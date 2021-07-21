@@ -120,6 +120,10 @@ class App extends Component {
     console.log('you have selected', cat);
     // panaudojam kat pavadinima kad parsiusiti veitoj visu items tik tos kategorijos items
     const result = await getItemsByCategory(cat);
+    console.log(result);
+    const shopCopy = { ...this.state.shop };
+    shopCopy.items = result;
+    this.setState({ shop: shopCopy });
   };
 
   render() {
